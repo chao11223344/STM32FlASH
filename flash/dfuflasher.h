@@ -25,7 +25,11 @@ public:
     QString cliPath() const { return m_cli; }
     bool isRunning() const;
 
-    // 全盘擦除: 开启则在写入前 -e [all] 擦除所有扇区 (默认关闭=只擦写所需扇区)。
+    // 目标 USB DFU 设备序号: "usb1"/"usb2"... 多设备并发时每个 flasher 用不同 port。
+    void setPort(const QString &usbN) { m_port = usbN; }
+    QString port() const { return m_port; }
+
+    // 全盘擦除: 开启则在写入前 -e all 擦除所有扇区 (默认关闭=只擦写所需扇区)。
     void setFullErase(bool on) { m_fullErase = on; }
     bool fullErase() const { return m_fullErase; }
 
@@ -49,6 +53,7 @@ private:
 
     QProcess *m_proc = nullptr;
     QString m_cli;
+    QString m_port = QStringLiteral("usb1");
     QString m_lineBuf;
     int m_phase = PhaseErase;
     bool m_downloadOk = false; // 见到 "verified/download complete" 即视为写入成功

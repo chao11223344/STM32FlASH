@@ -48,7 +48,7 @@ void DfuFlasher::flash(const QString &firmware, quint32 address)
     const QString ext = QFileInfo(firmware).suffix().toLower();
     quint32 runAddr = 0x08000000;         // 应用入口 = Flash 基址 (向量表所在)
     QStringList args;
-    args << "-c" << "port=usb1";          // 连接到第一个 USB DFU 设备
+    args << "-c" << QString("port=%1").arg(m_port);  // 连接到指定 USB DFU 设备
     if (m_fullErase)
         args << "-e" << "all";          // 全盘擦除: 写入前擦除所有扇区 (须在 -w 之前)
     args << "-w" << QDir::toNativeSeparators(firmware);

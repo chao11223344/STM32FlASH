@@ -16,12 +16,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    flash/dfuwatcher.cpp \
+    deviceslot.cpp \
+    flash/dfudevlist.cpp \
     flash/dfuflasher.cpp
 
 HEADERS += \
     mainwindow.h \
-    flash/dfuwatcher.h \
+    deviceslot.h \
+    flash/dfudevlist.h \
     flash/dfuflasher.h
 
 # Windows: DFU 设备检测需要 SetupAPI
