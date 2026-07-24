@@ -1,6 +1,7 @@
 # 构建产物
 build/
 build-*/
+dist/stm32_flasher/
 *.o
 *.obj
 moc_*.cpp
